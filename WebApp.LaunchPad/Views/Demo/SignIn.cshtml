@@ -66,17 +66,17 @@
                 ssoProxy.signIn(
                     {
                         data: {
-                            ConsumerKey: "000000001125P149",
-                            ConsumerSecret: "5Iqd3Ad3S2gdDr6NEg7IcFh5Nj6V-6XL",
-                            UserName: $("#txtUserName").val(),
-                            Password: $("#txtPassword").val(),
-                            ChurchCode: $("#txtChurchCode").val()
+                            consumerKey: "000000001125P149",
+                            consumerSecret: "5Iqd3Ad3S2gdDr6NEg7IcFh5Nj6V-6XL",
+                            userName: $("#txtUserName").val(),
+                            password: $("#txtPassword").val(),
+                            churchCode: $("#txtChurchCode").val()
                         },
                         success: function (rData) {
                             //old logic here. ex.
-                            sessionStorage.user = rData.User;
-                            sessionStorage.accessToken = rData.AccessToken;
-                            sessionStorage.refreshToken = rData.RefreshToken;
+                            sessionStorage.user = rData.user;
+                            sessionStorage.accessToken = rData.accessToken;
+                            sessionStorage.refreshToken = rData.refreshToken;
                         },
                         error: function (eData) { }
                     });
@@ -86,14 +86,14 @@
             $("#btnCreateAuthToken").click(function () {
                 ssoProxy.createAuthToken({
                     data: {
-                        ConsumerKey: "000000001125P149",
-                        ConsumerSecret: "5Iqd3Ad3S2gdDr6NEg7IcFh5Nj6V-6XL",
-                        SharedToken: ssoProxy.getSharedToken()
+                        consumerKey: "000000001125P149",
+                        consumerSecret: "5Iqd3Ad3S2gdDr6NEg7IcFh5Nj6V-6XL",
+                        sharedToken: ssoProxy.getSharedToken()
                     },
                     success: function (rData) {
-                        sessionStorage.user = rData.User;
-                        sessionStorage.accessToken = rData.AccessToken;
-                        sessionStorage.refreshToken = rData.RefreshToken;
+                        sessionStorage.user = rData.user;
+                        sessionStorage.accessToken = rData.accessToken;
+                        sessionStorage.refreshToken = rData.refreshToken;
                     },
                     error: function (msg) { }
                 });

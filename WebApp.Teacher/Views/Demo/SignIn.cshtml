@@ -2,7 +2,7 @@
     ViewBag.Title = "Signin";
 }
 
-<h2>SignIn - Dashboard</h2>
+<h2>SignIn - Teacher</h2>
 
 <div class="row">
     <div class="col-md-8">
@@ -59,14 +59,15 @@
 @section scripts{
     <script src="http://sso.local/scripts/sso-proxy-1.0.js"></script>
     <script type="text/javascript">
+        //ssoProxy.baseUrl = "http://sso.local";
         //Sign in logic.
         $(function () {
             $("#btnSignIn").click(function () {
                 ssoProxy.signIn(
                     {
                         data: {
-                            consumerKey: "000000004815C286",
-                            consumerSecret: "3yMSfxI9v40ZDVf5KhdRCmUSAjrV-8WI",
+                            consumerKey: "0000000011C5A9D6",
+                            consumerSecret: "8A6VVc5S93d2EVDS6N9e8Ds64fDD-dkZ",
                             userName: $("#txtUserName").val(),
                             password: $("#txtPassword").val(),
                             churchCode: $("#txtChurchCode").val()
@@ -78,16 +79,15 @@
                             sessionStorage.refreshToken = rData.refreshToken;
                         },
                         error: function (eData) { }
-                    }
-                );
+                    });
 
             });
 
             $("#btnCreateAuthToken").click(function () {
                 ssoProxy.createAuthToken({
                     data: {
-                        consumerKey: "000000004815C286",
-                        consumerSecret: "3yMSfxI9v40ZDVf5KhdRCmUSAjrV-8WI",
+                        consumerKey: "0000000011C5A9D6",
+                        consumerSecret: "8A6VVc5S93d2EVDS6N9e8Ds64fDD-dkZ",
                         sharedToken: ssoProxy.getSharedToken()
                     },
                     success: function (rData) {
