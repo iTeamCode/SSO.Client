@@ -62,7 +62,8 @@
         //ssoProxy.baseUrl = "http://sso.local";
         //Sign in logic.
         $(function () {
-            $("#btnSignIn").click(function () {
+            $("#btnSignIn").click(function (event) {
+                //event.preventDefault();
                 ssoProxy.signIn(
                     {
                         data: {
@@ -70,7 +71,8 @@
                             consumerSecret: "5Iqd3Ad3S2gdDr6NEg7IcFh5Nj6V-6XL",
                             userName: $("#txtUserName").val(),
                             password: $("#txtPassword").val(),
-                            churchCode: $("#txtChurchCode").val()
+                            churchCode: $("#txtChurchCode").val(),
+                            returnUrl: "http://launchpad.local.fellowshipone.com/Demo/index"
                         },
                         success: function (rData) {
                             //old logic here. ex.
@@ -80,7 +82,7 @@
                         },
                         error: function (eData) { }
                     });
-
+                return false;
             });
 
             $("#btnCreateAuthToken").click(function () {
@@ -91,6 +93,7 @@
                         sharedToken: ssoProxy.getSharedToken()
                     },
                     success: function (rData) {
+                        //old logic here. ex.
                         sessionStorage.user = rData.user;
                         sessionStorage.accessToken = rData.accessToken;
                         sessionStorage.refreshToken = rData.refreshToken;
